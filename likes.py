@@ -25,7 +25,7 @@ for i, track in enumerate(data['tracks']):
         if res['resultType'] == 'song':
             title = res['title']
             artists = ', '.join((a['name'] for a in res['artists']))
-            album = res['album']['name']
+            album = res['album']['name'] if res['album'] is not None else '<none>'
             videoId = res['videoId']
             print(f'liking "{title}" by ({artists}) from [{album}] ...', end = '')
             yt.rate_song(videoId, 'LIKE')
